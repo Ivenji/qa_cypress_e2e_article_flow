@@ -27,7 +27,7 @@ Cypress.Commands.add('createArticle', () => {
   const title = faker.lorem.words(3);
   const description = faker.lorem.sentence();
   const body = faker.lorem.paragraph();
-  const tagList = ['test', 'automation'];
+  const tagList = ['test1', 'test2'];
 
   return cy.getCookie('auth').then((token) => {
     const authToken = token.value;
@@ -46,12 +46,13 @@ Cypress.Commands.add('createArticle', () => {
       headers: {
         Authorization: `Token ${authToken}`
       }
-    }).then(() => {
+    }).then((response) => {
       return {
         title,
         description,
         body,
-        tagList: tagList.join(',')
+        tagList: tagList.join(','),
+        slug: response.body.article.slug
       };
     });
   });
