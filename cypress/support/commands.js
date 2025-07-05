@@ -24,7 +24,7 @@ Cypress.Commands.add('login', (email, username, password) => {
 const { faker } = require('@faker-js/faker');
 
 Cypress.Commands.add('createArticle', () => {
-  const title = faker.lorem.words(3);
+  const title = faker.lorem.words(2);
   const description = faker.lorem.sentence();
   const body = faker.lorem.paragraph();
   const tagList = ['test1', 'test2'];
